@@ -1,0 +1,156 @@
+{
+	"name": "bush-bot",
+	"version": "3.0.0",
+	"description": "A multipurpose moderation bot developed for Moulberry's Bush.",
+	"main": "dist/src/bot.js",
+	"repository": "https://github.com/NotEnoughUpdates/bush-bot-3.0",
+	"author": "IRONM00N#0001 (@IRONM00N)",
+	"contributors": [
+		"Tyman#5998 (@TymanWasTaken)",
+		"TrashCan#8913 (@TrashCan69420)",
+		"tricked#3777 (@SkyBlockDev)",
+		"rioho#0001 (@riohorealhk)",
+		"Proudmuslim#2900 (@proudmuslim-dev)",
+		"Zordlan#3560 (@Zordlan)"
+	],
+	"license": "CC-BY-NC-SA-4.0",
+	"_moduleAliases": {
+		"@root": ".",
+		"@lib": "dist/src/lib"
+	},
+	"scripts": {
+		"build-esbuild": "yarn rimraf dist && yarn esbuild --sourcemap=inline --outdir=dist --platform=node --target=es2020 --format=cjs --log-level=warning src/**/*.ts",
+		"build-tsc": "yarn rimraf dist && yarn tsc",
+		"_start": "yarn build-esbuild && node --trace-warnings dist/src/bot.js",
+		"start": "yarn build-tsc && node --trace-warnings dist/src/bot.js",
+		"dev": "yarn build-tsc && node --trace-warnings dist/src/bot.js",
+		"test": "yarn lint && yarn tsc --noEmit",
+		"format": "yarn prettier . --write",
+		"lint": "yarn eslint --ext js,jsx,ts,tsx src",
+		"format-check": "yarn prettier . --check",
+		"upgrade": "rimraf yarn.lock && yarn cache clean && yarn install && yarn up ||1|| yarn dlx @yarnpkg/sdks vscode"
+	},
+	"devDependencies": {
+		"@types/common-tags": "^1.8.0",
+		"@types/express": "^4.17.12",
+		"@types/humanize-duration": "^3",
+		"@types/lodash": "^4.14.172",
+		"@types/module-alias": "^2",
+		"@types/node": "^14.14.22",
+		"@types/node-fetch": "^2",
+		"@types/tinycolor2": "^1",
+		"@types/uuid": "^8.3.0",
+		"@types/validator": "^13.6.3",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1"
+	},
+	"dependencies": {
+		"@discordjs/builders": "^0.6.0",
+		"@discordjs/voice": "^0.6.0",
+		"canvas": "^2.8.0",
+		"chalk": "^4.1.1",
+		"common-tags": "^1.8.0",
+		"discord-akairo": "NotEnoughUpdates/discord-akairo",
+		"discord-akairo-message-util": "NotEnoughUpdates/discord-akairo-message-util",
+		"discord-api-types": "0.22.0",
+		"discord.js": "NotEnoughUpdates/discord.js",
+		"discord.js-minesweeper": "^1.0.6",
+		"esbuild": "^0.12.11",
+		"eslint": "^7.29.0",
+		"eslint-config-prettier": "^8.3.0",
+		"events-intercept": "^2.0.0",
+		"fuse.js": "^6.4.6",
+		"got": "^11.8.2",
+		"humanize-duration": "^3.27.0",
+		"json5": "^2.2.0",
+		"lodash": "^4.17.21",
+		"mathjs": "^9.4.4",
+		"module-alias": "^2.2.2",
+		"moment": "^2.29.1",
+		"node-fetch": "^2.6.1",
+		"pg": "^8.5.1",
+		"pg-hstore": "^2.3.3",
+		"prettier": "^2.3.2",
+		"rimraf": "^3.0.2",
+		"sequelize": "^6.5.0",
+		"simplify-number": "^1.0.0",
+		"source-map-support": "^0.5.19",
+		"tinycolor2": "^1.4.2",
+		"typescript": "^4.4.2",
+		"uuid": "^8.3.2",
+		"wolfram-alpha-api": "https://products.wolframalpha.com/api/libraries/javascript/wolfram-alpha-api-1.0.0-rc.1.tgz"
+	},
+	"eslintConfig": {
+		"env": {
+			"es2021": true,
+			"node": true
+		},
+		"extends": [
+			"eslint:recommended",
+			"plugin:@typescript-eslint/recommended",
+			"prettier"
+		],
+		"parser": "@typescript-eslint/parser",
+		"parserOptions": {
+			"ecmaVersion": 12,
+			"sourceType": "module",
+			"project": "./tsconfig.json"
+		},
+		"plugins": [
+			"@typescript-eslint"
+		],
+		"ignorePatterns": [
+			"dist"
+		],
+		"rules": {
+			"no-return-await": "off",
+			"@typescript-eslint/no-empty-interface": "warn",
+			"no-mixed-spaces-and-tabs": "off",
+			"no-duplicate-imports": "warn",
+			"no-empty-function": "off",
+			"@typescript-eslint/no-empty-function": "off",
+			"no-empty": "off",
+			"@typescript-eslint/ban-ts-comment": [
+				"error",
+				{
+					"ts-expect-error": "allow-with-description",
+					"ts-ignore": "allow-with-description",
+					"ts-nocheck": "allow-with-description",
+					"ts-check": "allow-with-description",
+					"minimumDescriptionLength": 5
+				}
+			],
+			"@typescript-eslint/no-floating-promises": "warn",
+			"prefer-promise-reject-errors": "warn",
+			"@typescript-eslint/no-misused-promises": "error",
+			"@typescript-eslint/no-base-to-string": "error",
+			"no-loss-of-precision": "off",
+			"@typescript-eslint/no-loss-of-precision": "error",
+			"no-throw-literal": "off",
+			"@typescript-eslint/no-throw-literal": "warn",
+			"@typescript-eslint/prefer-nullish-coalescing": "warn",
+			"@typescript-eslint/no-explicit-any": "off",
+			"@typescript-eslint/no-non-null-assertion": "off",
+			"@typescript-eslint/explicit-module-boundary-types": "off"
+		}
+	},
+	"prettier": {
+		"printWidth": 128,
+		"useTabs": true,
+		"quoteProps": "consistent",
+		"singleQuote": true,
+		"trailingComma": "none"
+	},
+	"packageManager": "yarn@3.0.1",
+	"dependenciesMeta": {
+		"discord-akairo@8.2.2": {
+			"unplugged": true
+		},
+		"discord.js@13.2.0-dev": {
+			"unplugged": true
+		},
+		"wolfram-alpha-api@1.0.0-rc.1": {
+			"unplugged": true
+		}
+	}
+}
